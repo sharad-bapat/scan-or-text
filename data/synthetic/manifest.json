@@ -1,0 +1,1052 @@
+[
+ {
+  "file": "data\\synthetic\\scan\\s000.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA_Mutual_template2_5_2019.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s000.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA_Mutual_template2_5_2019.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s000.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA_Mutual_template2_5_2019.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s001.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\CopAcc_NDA-and-ToP-Mentors_2.0_2017.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s001.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\CopAcc_NDA-and-ToP-Mentors_2.0_2017.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s001.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\CopAcc_NDA-and-ToP-Mentors_2.0_2017.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s002.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\TabunKitchenInvestments-NDA.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s002.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\TabunKitchenInvestments-NDA.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s002.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\TabunKitchenInvestments-NDA.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s003.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Confidentiality.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s003.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Confidentiality.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s003.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Confidentiality.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s004.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non_Disclosure_Agreement_1.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s004.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non_Disclosure_Agreement_1.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s004.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non_Disclosure_Agreement_1.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s005.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\document_viewer.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s005.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\document_viewer.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s005.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\document_viewer.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s006.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\rqnda.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s006.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\rqnda.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s006.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\rqnda.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s007.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\nda_8.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s007.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\nda_8.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s007.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\nda_8.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s008.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Mutual%20confidentiality%20and%20NDA%20-%20Final%20(2)%20(6)%2003%20July%202015.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s008.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Mutual%20confidentiality%20and%20NDA%20-%20Final%20(2)%20(6)%2003%20July%202015.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s008.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Mutual%20confidentiality%20and%20NDA%20-%20Final%20(2)%20(6)%2003%20July%202015.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s009.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\eHandshake_Non_Disclosure_Agreement.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s009.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\eHandshake_Non_Disclosure_Agreement.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s009.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\eHandshake_Non_Disclosure_Agreement.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s010.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\SMT-R-100-01-NON-DISCLOSURE-AGREEMENT.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s010.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\SMT-R-100-01-NON-DISCLOSURE-AGREEMENT.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s010.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\SMT-R-100-01-NON-DISCLOSURE-AGREEMENT.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s011.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non-Disclosure-Agreement_10.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s011.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non-Disclosure-Agreement_10.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s011.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non-Disclosure-Agreement_10.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s012.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Basic-Non-Disclosure-Agreement.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s012.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Basic-Non-Disclosure-Agreement.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s012.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Basic-Non-Disclosure-Agreement.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s013.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Template-NDA.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s013.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Template-NDA.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s013.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Template-NDA.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s014.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-Agreement-NPAF.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s014.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-Agreement-NPAF.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s014.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-Agreement-NPAF.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s015.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\130806ca141.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s015.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\130806ca141.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s015.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\130806ca141.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s016.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-Urban_Wind_Turbines.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s016.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-Urban_Wind_Turbines.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s016.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-Urban_Wind_Turbines.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s017.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA_eng.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s017.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA_eng.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s017.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA_eng.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s018.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Mutual+Confidentiality+Agreement_1.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s018.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Mutual+Confidentiality+Agreement_1.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s018.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Mutual+Confidentiality+Agreement_1.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s019.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\nda_3.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s019.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\nda_3.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s019.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\nda_3.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s020.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\nda-employee-template.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s020.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\nda-employee-template.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s020.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\nda-employee-template.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s021.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\stony_hill_buyer_nda.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s021.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\stony_hill_buyer_nda.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s021.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\stony_hill_buyer_nda.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s022.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\MUTUAL_NDA.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s022.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\MUTUAL_NDA.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s022.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\MUTUAL_NDA.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s023.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\PSGT Agreement NDA New Supplier Non Disclosure Template DC.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s023.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\PSGT Agreement NDA New Supplier Non Disclosure Template DC.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s023.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\PSGT Agreement NDA New Supplier Non Disclosure Template DC.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s024.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\khronos-mutual-nda.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s024.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\khronos-mutual-nda.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s024.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\khronos-mutual-nda.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s025.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\09-24-2019-04-25-05-3914910473.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s025.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\09-24-2019-04-25-05-3914910473.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s025.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\09-24-2019-04-25-05-3914910473.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s026.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Confidentiality%20Non-Disclosure%20and%20Appropriate%20Use%20Agreement%20-%20FAU.01082016.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s026.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Confidentiality%20Non-Disclosure%20and%20Appropriate%20Use%20Agreement%20-%20FAU.01082016.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s026.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Confidentiality%20Non-Disclosure%20and%20Appropriate%20Use%20Agreement%20-%20FAU.01082016.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s027.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\IPTK-CO-MutualNon-DisclosureAgreement.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s027.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\IPTK-CO-MutualNon-DisclosureAgreement.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s027.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\IPTK-CO-MutualNon-DisclosureAgreement.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s028.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Supplier_Non-Disclosure_Agreement.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s028.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Supplier_Non-Disclosure_Agreement.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s028.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Supplier_Non-Disclosure_Agreement.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s029.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA%20Form%20WEB_WITH%20Instructions%20%28RECIPROCAL%29%20%28v%202016-03-18_EN%29.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s029.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA%20Form%20WEB_WITH%20Instructions%20%28RECIPROCAL%29%20%28v%202016-03-18_EN%29.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\ocr\\s029.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA%20Form%20WEB_WITH%20Instructions%20%28RECIPROCAL%29%20%28v%202016-03-18_EN%29.pdf",
+  "truth": "scanned_ocr",
+  "needs_ocr": false,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s030.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\form_NondisclosureBlanket.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s030.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\form_NondisclosureBlanket.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s031.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non-disclosure%20Agreement_1.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s031.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non-disclosure%20Agreement_1.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s032.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA_7.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s032.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA_7.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s033.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Kerber_Non_Disclosure_Agreement.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s033.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Kerber_Non_Disclosure_Agreement.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s034.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Mutual%20Non%20Disclosure%20Agreement_0.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s034.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Mutual%20Non%20Disclosure%20Agreement_0.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s035.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NonDisEC12212010.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s035.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NonDisEC12212010.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s036.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Standard%20NDA%20by%20Axial.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s036.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Standard%20NDA%20by%20Axial.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s037.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\OOR104E_Non-Disclosure_Agreement-Company.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s037.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\OOR104E_Non-Disclosure_Agreement-Company.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s038.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\36C25520Q0076-013.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s038.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\36C25520Q0076-013.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s039.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\BOMI%20Non-Disclosure%20Agreement.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s039.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\BOMI%20Non-Disclosure%20Agreement.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s040.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\CA-Nov14-Doc.5.14%20-%20Template%20Confidentiality%20Agreement.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s040.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\CA-Nov14-Doc.5.14%20-%20Template%20Confidentiality%20Agreement.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s041.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-STP-Performance-Coating-revC.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s041.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-STP-Performance-Coating-revC.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s042.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Petrolube_NDA.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s042.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Petrolube_NDA.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s043.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\ExcelerateStandardNDAFormat.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s043.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\ExcelerateStandardNDAFormat.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s044.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-ONSemi_IndustryAnalystConf-2011.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s044.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NDA-ONSemi_IndustryAnalystConf-2011.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s045.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\IMOA%20Molybdenum%20Consortium%20NDA%20Agreement%20amended%20Jan%2008,%20valid%20March%2009%20onwards.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s045.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\IMOA%20Molybdenum%20Consortium%20NDA%20Agreement%20amended%20Jan%2008,%20valid%20March%2009%20onwards.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s046.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\sample_nda.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s046.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\sample_nda.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s047.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non-disclosure.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s047.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non-disclosure.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s048.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NRSC_2015_NDAForm.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s048.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NRSC_2015_NDAForm.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s049.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Data Use Agreement New York City.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s049.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Data Use Agreement New York City.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s050.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non_Disclosure_Agreement_2.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s050.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non_Disclosure_Agreement_2.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s051.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non-Disclosure-Agreement_4.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s051.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Non-Disclosure-Agreement_4.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s052.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\ceii-and-nda.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s052.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\ceii-and-nda.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s053.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NU%20Confidentiality%20Non-Disclosure%20%20Information%20Security%20Agreement%20Final%20....pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s053.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\NU%20Confidentiality%20Non-Disclosure%20%20Information%20Security%20Agreement%20Final%20....pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s054.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\SONGS%20RFP%20Confidentiality%20Agreement_201705051754392249.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s054.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\SONGS%20RFP%20Confidentiality%20Agreement_201705051754392249.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s055.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\WEBSITE%20MNDA.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s055.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\WEBSITE%20MNDA.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s056.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\buyer_profile.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s056.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\buyer_profile.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s057.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\ATI%20504%20US%20Mutual%20NDA.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s057.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\ATI%20504%20US%20Mutual%20NDA.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\scan\\s058.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\5-NSK-Confidentiality-Agreement-for-Suppliers.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s058.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\5-NSK-Confidentiality-Agreement-for-Suppliers.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": true
+ },
+ {
+  "file": "data\\synthetic\\scan\\s059.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Tazza-CAFFE-Confidentiality-Agreement.pdf",
+  "truth": "scanned",
+  "needs_ocr": true,
+  "jpeg": false
+ },
+ {
+  "file": "data\\synthetic\\mixed\\s059.pdf",
+  "source": "datasets\\contract-nli\\contract-nli\\raw\\Tazza-CAFFE-Confidentiality-Agreement.pdf",
+  "truth": "mixed",
+  "needs_ocr": true,
+  "jpeg": false
+ }
+]

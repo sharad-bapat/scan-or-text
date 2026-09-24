@@ -1,0 +1,7 @@
+target/
+wasm-pkg/
+data/synthetic/**/*.pdf
+data/files.txt
+data/encrypted.txt
+__pycache__/
+results/*.err
