@@ -415,7 +415,9 @@ impl<'a> Pdf<'a> {
             let num = match parse_uint(data, num_start) { Some((n, _)) => n as u32, None => continue };
             let start = p + 3;
             let end = find(data, b"endobj", start).unwrap_or(data.len());
-            let stream = find(data, b"stream", start).filter(|&k| k < end);
+            // search only inside this object: an unbounded search runs to the next stream in the file,
+            // which is quadratic in files with many small objects
+            let stream = find(&data[..end], b"stream", start);
             let loc = match stream {
                 Some(k) => {
                     let mut s = k + 6;
@@ -868,5 +870,18 @@ endstream");
         let s = stream("/Filter /RunLengthDecode", &rl);
         let r = classify(&one_page("4 0 R", &[(4, &s)]));
         assert_eq!((r.text, r.unknown), (1, 0), "{:?}", r);
+    }
+    #[test]
+    fn many_small_objects_index_in_linear_time() {
+        // 20000 stream-less objects before the only stream: each one used to search to the end
+        let bodies: Vec<(u32, Vec<u8>)> = (10..20010).map(|n| (n, format!("<< /K {} >>", n).into_bytes())).collect();
+        let s = stream("", TEXT);
+        let mut extra: Vec<(u32, &[u8])> = bodies.iter().map(|(n, b)| (*n, b.as_slice())).collect();
+        extra.push((4, &s));
+        let data = one_page("4 0 R", &extra);
+        let t = std::time::Instant::now();
+        let r = classify(&data);
+        assert_eq!(r.text, 1, "{:?}", r);
+        assert!(t.elapsed().as_secs_f64() < 0.3, "took {:?}", t.elapsed());
     }
 }
