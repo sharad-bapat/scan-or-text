@@ -266,6 +266,66 @@ fn ascii85(s: &[u8]) -> Option<Vec<u8>> {
     Some(out)
 }
 
+/// LZW decoding as PDF uses it (ISO 32000-1 7.4.4): 9 to 12 bit codes, 256 = clear, 257 = end.
+/// With `early` (the default EarlyChange 1), the code width grows one code sooner.
+fn lzw(data: &[u8], early: bool) -> Vec<u8> {
+    let mut out = Vec::with_capacity(data.len() * 3);
+    // each entry is (prefix entry, last byte, first byte, length); strings are rebuilt on output
+    let mut table: Vec<(u32, u8, u8, u32)> = (0..256u32).map(|b| (u32::MAX, b as u8, b as u8, 1)).collect();
+    table.push((0, 0, 0, 0));
+    table.push((0, 0, 0, 0));
+    let (mut width, mut buf, mut nbits, mut i) = (9u32, 0u32, 0u32, 0usize);
+    let mut prev: Option<u32> = None;
+    let mut scratch = Vec::new();
+    loop {
+        while nbits < width {
+            if i >= data.len() { return out; }
+            buf = (buf << 8) | data[i] as u32;
+            i += 1;
+            nbits += 8;
+        }
+        let code = (buf >> (nbits - width)) & ((1 << width) - 1);
+        nbits -= width;
+        buf &= (1 << nbits) - 1;
+        if code == 256 { table.truncate(258); width = 9; prev = None; continue; }
+        if code == 257 { break; }
+        let known = (code as usize) < table.len();
+        let (first, entry) = match (known, prev) {
+            (true, _) => (table[code as usize].2, code),
+            (false, Some(p)) if code as usize == table.len() => (table[p as usize].2, u32::MAX),
+            _ => break,
+        };
+        if let Some(p) = prev {
+            let pe = table[p as usize];
+            if table.len() < 4096 { table.push((p, first, pe.2, pe.3 + 1)); }
+        }
+        let e = if entry == u32::MAX { (table.len() - 1) as u32 } else { entry };
+        // walk the entry back to its root, then reverse
+        scratch.clear();
+        let mut k = e;
+        while k != u32::MAX { let t = table[k as usize]; scratch.push(t.1); k = t.0; }
+        out.extend(scratch.iter().rev());
+        prev = Some(e);
+        let size = table.len() as u32 + if early { 1 } else { 0 };
+        if size >= (1 << width) && width < 12 { width += 1; }
+    }
+    out
+}
+
+/// RunLengthDecode (ISO 32000-1 7.4.5).
+fn run_length(data: &[u8]) -> Vec<u8> {
+    let mut out = Vec::with_capacity(data.len() * 2);
+    let mut i = 0;
+    while i < data.len() {
+        let n = data[i] as usize;
+        i += 1;
+        if n < 128 { let e = (i + n + 1).min(data.len()); out.extend_from_slice(&data[i..e]); i = e; }
+        else if n > 128 { if i < data.len() { out.extend(std::iter::repeat(data[i]).take(257 - n)); } i += 1; }
+        else { break; }
+    }
+    out
+}
+
 /// A string value (literal "(...)" with escapes, or hex "<...>") at position `i`.
 fn string_at(s: &[u8], i: usize) -> Option<Vec<u8>> {
     if i >= s.len() { return None; }
@@ -440,7 +500,7 @@ impl<'a> Pdf<'a> {
         match v { Val::Dict(d) => Some(d.clone()), Val::Ref(n) => self.dict(*n), _ => None }
     }
 
-    /// Decoded stream data (FlateDecode or unfiltered). None for unsupported filters.
+    /// Decoded stream data (Flate, LZW, RunLength, ASCII85, ASCIIHex or unfiltered). None for other filters.
     fn stream(&self, n: u32) -> Option<Vec<u8>> {
         let (gen, s, e) = match self.objs.get(&n)? { Loc::Top { gen, stream: Some(r), .. } => (*gen, r.0, r.1), _ => return None };
         let dict = self.dict(n)?;
@@ -474,6 +534,11 @@ impl<'a> Pdf<'a> {
                     v.push((h(p[0]) << 4) | if p.len() > 1 { h(p[1]) } else { 0 });
                 }
                 out = v;
+            } else if f == b"LZWDecode" || f == b"LZW" {
+                let early = find(&dict, b"/EarlyChange 0", 0).is_none();
+                out = lzw(&out, early);
+            } else if f == b"RunLengthDecode" || f == b"RL" {
+                out = run_length(&out);
             } else if f == b"FlateDecode" || f == b"Fl" {
                 out = match miniz_oxide::inflate::decompress_to_vec_zlib(&out) {
                     Ok(v) => v,
@@ -788,5 +853,20 @@ endstream");
         let data = one_page("4 0 R", &[(4, b"[5 0 R]"), (5, &s)]);
         let r = classify(&data);
         assert_eq!((r.pages, r.text, r.unknown), (1, 1, 0), "{:?}", r);
+    }
+
+    #[test]
+    fn lzw_and_run_length_content() {
+        // "-----A---B" in LZW (the ISO 32000-1 7.4.4.2 example), and a RunLength literal run
+        let lzw_data = [0x80, 0x0B, 0x60, 0x50, 0x22, 0x0C, 0x0C, 0x85, 0x01];
+        assert_eq!(lzw(&lzw_data, true), b"-----A---B");
+        assert_eq!(run_length(&[2, b'a', b'b', b'c', 253, b'x', 128]), b"abcxxxx");
+
+        let mut rl = vec![(TEXT.len() - 1) as u8];
+        rl.extend_from_slice(TEXT);
+        rl.push(128);
+        let s = stream("/Filter /RunLengthDecode", &rl);
+        let r = classify(&one_page("4 0 R", &[(4, &s)]));
+        assert_eq!((r.text, r.unknown), (1, 0), "{:?}", r);
     }
 }
