@@ -462,12 +462,18 @@ impl<'a> Pdf<'a> {
         crypt::Crypt::new(r, if r == 2 { 40 } else { length }, &o, perms, &id0, aes, encrypt_metadata)
     }
 
+    /// Objects packed in object streams. Deterministic: streams are read in file order, and a packed
+    /// copy replaces an earlier one, or a top-level object that sits earlier in the file, as an
+    /// incremental update would. (Iterating the HashMap directly made the winner depend on its seed.)
     fn unpack_object_streams(&mut self) {
-        let stms: Vec<u32> = self.objs.iter()
-            .filter(|(_, l)| matches!(l, Loc::Top { stream: Some(_), .. }))
-            .filter(|(n, _)| matches!(self.dict(**n).and_then(|d| get(&d, b"/Type")), Some(Val::Name(t)) if t == b"ObjStm"))
-            .map(|(n, _)| *n).collect();
-        for n in stms {
+        let mut stms: Vec<(usize, u32)> = self.objs.iter()
+            .filter_map(|(n, l)| match l { Loc::Top { dict, stream: Some(_), .. } => Some((dict.0, *n)), _ => None })
+            .filter(|(_, n)| matches!(self.dict(*n).and_then(|d| get(&d, b"/Type")), Some(Val::Name(t)) if t == b"ObjStm"))
+            .collect();
+        stms.sort_unstable();
+        // file position of each packed object's stream, for the "newer wins" rule
+        let mut packed_at: HashMap<u32, usize> = HashMap::new();
+        for (pos, n) in stms {
             let dict = match self.dict(n) { Some(d) => d, None => continue };
             let count = match get(&dict, b"/N") { Some(Val::Num(v)) => v as usize, _ => continue };
             let first = match get(&dict, b"/First") { Some(Val::Num(v)) => v as usize, _ => continue };
@@ -484,7 +490,15 @@ impl<'a> Pdf<'a> {
             }
             self.bufs.push(buf);
             for (num, start, end) in entries {
-                self.objs.entry(num).or_insert(Loc::Packed { buf: idx, start, end });
+                let newer = match self.objs.get(&num) {
+                    None => true,
+                    Some(Loc::Packed { .. }) => packed_at.get(&num).map(|&p| p < pos).unwrap_or(true),
+                    Some(Loc::Top { dict, .. }) => dict.0 < pos,
+                };
+                if newer {
+                    self.objs.insert(num, Loc::Packed { buf: idx, start, end });
+                    packed_at.insert(num, pos);
+                }
             }
         }
     }
@@ -883,5 +897,32 @@ endstream");
         let r = classify(&data);
         assert_eq!(r.text, 1, "{:?}", r);
         assert!(t.elapsed().as_secs_f64() < 0.3, "took {:?}", t.elapsed());
+    }
+
+    fn objstm(num: u32, body: &str) -> Vec<u8> {
+        let header = format!("{} 0 ", num);
+        stream(&format!("/Type /ObjStm /N 1 /First {}", header.len()), format!("{}{}", header, body).as_bytes())
+    }
+
+    #[test]
+    fn later_copy_of_an_object_wins() {
+        let text = stream("", TEXT);
+        let blank = stream("", b"");
+        let page = |c: u32| format!("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents {} 0 R >>", c);
+        let (to_text, to_blank) = (objstm(3, &page(4)), objstm(3, &page(5)));
+        let head: [(u32, &[u8]); 4] = [(1, b"<< /Type /Catalog /Pages 2 0 R >>"), (2, b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>"), (4, &text), (5, &blank)];
+        let classes = |objs: &[(u32, &[u8])]| {
+            let mut all = head.to_vec();
+            all.extend_from_slice(objs);
+            let r = classify(&pdf(&all));
+            (r.text, r.empty)
+        };
+        // two object streams hold page 3: the one later in the file wins, whichever it is
+        assert_eq!(classes(&[(6, &to_blank), (7, &to_text)]), (1, 0));
+        assert_eq!(classes(&[(6, &to_text), (7, &to_blank)]), (0, 1));
+        // a top-level copy wins over an earlier object stream, and loses to a later one
+        let top_blank = page(5);
+        assert_eq!(classes(&[(6, &to_text), (3, top_blank.as_bytes())]), (0, 1));
+        assert_eq!(classes(&[(3, top_blank.as_bytes()), (6, &to_text)]), (1, 0));
     }
 }
