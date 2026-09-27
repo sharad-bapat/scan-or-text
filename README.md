@@ -20,44 +20,32 @@ Does this PDF need OCR? A minimal structural classifier in Rust (also compiled t
 
 ## Data
 
-- **375 real NDAs:** ContractNLI's source PDFs (Koreeda & Manning 2021, CC BY 4.0). They're read from their download folder, not committed.
-  - 370 are text, 2 are scans with an OCR layer, and 3 are mixed (scanned signature pages). 18 are encrypted with an empty user password.
-- **150 constructed files** from 60 randomly chosen real NDAs (seed 20260925, first 3 pages of each):
-  - 60 scanned
-  - 60 mixed
-  - 30 OCR'd scans
+The real files are ContractNLI's 375 source PDFs (Koreeda & Manning 2021, CC BY 4.0), read from their download folder and not committed. 370 are text, 2 are scans with an OCR layer, and 3 are mixed (scanned signature pages). 18 are encrypted with an empty user password.
 
-  The independent labeller agrees with the construction on all 150.
+The 150 constructed files come from 60 randomly chosen real NDAs (seed 20260925, first 3 pages of each): 60 scanned, 60 mixed and 30 OCR'd scans. The independent labeller agrees with the construction on all 150.
 
-## Results (2026-09-25, a Windows laptop; absolute times vary about 2× between runs, so compare within a run)
+## Results
+
+Run on 2026-09-25 on a Windows laptop. Absolute times vary about two times between runs, so compare within a run.
 
 | | Routing correct (needs OCR or not) | Wrong | Median | p95 | Max |
 |---|---|---|---|---|---|
 | scan-or-text, native | 525 / 525 | 0 | 1.34 ms | 4.09 ms | 14.0 ms |
 | pdf-inspector 1.24.0 (same run) | 491 / 525 | 34 (all false "needs OCR") | 3.06 ms | 9.49 ms | 66.7 ms |
 
-Native against WebAssembly, run back to back twice:
-- Native: 0.90 ms median, 2.6 ms p95.
-- WebAssembly: 1.16 ms median, 3.6 ms p95.
-- Both are 525 / 525.
+Run back to back twice, native was 0.90 ms median and 2.6 ms p95, and WebAssembly 1.16 ms median and 3.6 ms p95. Both got 525 / 525. PyMuPDF's full parse (the ground truth, in Python) takes 14.4 ms median, 40 ms p95 and 703 ms max.
 
-PyMuPDF's full parse (the ground truth, in Python) takes 14.4 ms median, 40 ms p95 and 703 ms max.
-
-pdf-inspector's 34 misses break down as:
-- the 30 constructed OCR'd scans plus 2 real ones, which it treats as scanned, so they get OCR'd again (a difference in definition);
-- 2 digital documents flagged as scanned (genuine errors).
+Of pdf-inspector's 34 misses, 32 are the 30 constructed OCR'd scans plus 2 real ones, which it treats as scanned, so they'd get OCR'd again. That's a difference in definition. The other 2 are digital documents it flagged as scanned, which are real errors.
 
 ## Versions
 
-1. **No decryption (miniz_oxide only).** Routing was 507 correct and 18 undecided: exactly the 18 encrypted files.
-2. **Adding RC4 and AES-128 decryption,** empty user password, revisions 2 to 4. The first AES attempt failed because the stream slice kept the end-of-line before `endstream`, so the data wasn't a multiple of 16 bytes. The fix was to decrypt whole blocks only.
-3. **Adding ASCII85 and ASCIIHex filters,** needed by one encrypted file. That gave 525 / 525.
+1. No decryption (miniz_oxide only). Routing was 507 correct and 18 undecided: exactly the 18 encrypted files.
+2. RC4 and AES-128 decryption added, for an empty user password, revisions 2 to 4. The first AES attempt failed because the stream slice kept the end-of-line before `endstream`, so the data wasn't a multiple of 16 bytes. Decrypting whole blocks only fixed it.
+3. ASCII85 and ASCIIHex filters added, which one encrypted file needed. That gave 525 / 525.
 
 ## Limits
 
-- **Unsupported:** AES-256 (revisions 5 and 6), the LZW and RunLength filters, and non-empty passwords. These all return `unknown`.
-- **Rough character counts:** a two-byte CID font counts double, and the thresholds (40 characters; image coverage of 30% and 80%) mirror the labeller's.
-- **Constructed scans are clean:** no skew, noise, tiled strips, or JBIG2/CCITT images. Only 3 real documents need OCR.
+AES-256 (revisions 5 and 6), the LZW and RunLength filters and non-empty passwords aren't supported; they all return `unknown`. Character counts are rough: a two-byte CID font counts double, and the thresholds (40 characters; image coverage of 30% and 80%) mirror the labeller's. The constructed scans are clean, with no skew, noise, tiled strips or JBIG2/CCITT images, and only 3 real documents need OCR.
 
 ## Commands
 
