@@ -672,7 +672,8 @@ fn classify_page(pdf: &Pdf, page: u32) -> PageClass {
     let area = (w * h).max(1.0);
     let resources = pdf.inherited(page, b"/Resources").and_then(|v| pdf.resolve(&v));
     let refs = match get(&d, b"/Contents") {
-        Some(Val::Ref(n)) => match pdf.dict(n) { Some(x) if x.starts_with(b"[") => refs_in(&x), _ => vec![n] },
+        // a stream, an array of streams, or a reference to an array object holding them
+        Some(Val::Ref(n)) => match pdf.dict(n).map(|x| parse_val(&x, 0)) { Some(Val::Array(a)) => refs_in(&a), _ => vec![n] },
         Some(Val::Array(a)) => refs_in(&a),
         _ => Vec::new(),
     };
@@ -733,4 +734,59 @@ mod wasm {
     /// JSON report for the bytes of one PDF.
     #[wasm_bindgen]
     pub fn classify_json(bytes: &[u8]) -> String { super::classify(bytes).to_json() }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// A small PDF from numbered object bodies, with a catalog as object 1.
+    fn pdf(objs: &[(u32, &[u8])]) -> Vec<u8> {
+        let mut out = b"%PDF-1.4
+".to_vec();
+        for (n, body) in objs {
+            out.extend_from_slice(format!("{} 0 obj
+", n).as_bytes());
+            out.extend_from_slice(body);
+            out.extend_from_slice(b"
+endobj
+");
+        }
+        out.extend_from_slice(b"trailer
+<< /Root 1 0 R >>
+%%EOF
+");
+        out
+    }
+
+    fn stream(dict: &str, data: &[u8]) -> Vec<u8> {
+        let mut v = format!("<< {} /Length {} >>
+stream
+", dict, data.len()).into_bytes();
+        v.extend_from_slice(data);
+        v.extend_from_slice(b"
+endstream");
+        v
+    }
+
+    const TEXT: &[u8] = b"BT /F1 12 Tf 72 700 Td (The quick brown fox jumps over the lazy dog, twice over.) Tj ET";
+
+    fn one_page(contents: &str, extra: &[(u32, &[u8])]) -> Vec<u8> {
+        let page = format!("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents {} >>", contents);
+        let mut objs: Vec<(u32, &[u8])> = vec![
+            (1, b"<< /Type /Catalog /Pages 2 0 R >>"),
+            (2, b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>"),
+            (3, page.as_bytes()),
+        ];
+        objs.extend_from_slice(extra);
+        pdf(&objs)
+    }
+
+    #[test]
+    fn contents_as_reference_to_array() {
+        let s = stream("", TEXT);
+        let data = one_page("4 0 R", &[(4, b"[5 0 R]"), (5, &s)]);
+        let r = classify(&data);
+        assert_eq!((r.pages, r.text, r.unknown), (1, 1, 0), "{:?}", r);
+    }
 }
