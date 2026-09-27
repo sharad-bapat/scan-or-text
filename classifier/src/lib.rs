@@ -462,17 +462,16 @@ impl<'a> Pdf<'a> {
         crypt::Crypt::new(r, if r == 2 { 40 } else { length }, &o, perms, &id0, aes, encrypt_metadata)
     }
 
-    /// Objects packed in object streams. Deterministic: streams are read in file order, and a packed
-    /// copy replaces an earlier one, or a top-level object that sits earlier in the file, as an
-    /// incremental update would. (Iterating the HashMap directly made the winner depend on its seed.)
+    /// Objects packed in object streams. Deterministic: a packed copy replaces a top-level object, or
+    /// a copy in another object stream, only when its stream sits later in the file, as an incremental
+    /// update would. Every stream is read before any entry changes, so the HashMap's order can't
+    /// matter (taking the first copy seen made the winner depend on its seed).
     fn unpack_object_streams(&mut self) {
-        let mut stms: Vec<(usize, u32)> = self.objs.iter()
+        let stms: Vec<(usize, u32)> = self.objs.iter()
             .filter_map(|(n, l)| match l { Loc::Top { dict, stream: Some(_), .. } => Some((dict.0, *n)), _ => None })
             .filter(|(_, n)| matches!(self.dict(*n).and_then(|d| get(&d, b"/Type")), Some(Val::Name(t)) if t == b"ObjStm"))
             .collect();
-        stms.sort_unstable();
-        // file position of each packed object's stream, for the "newer wins" rule
-        let mut packed_at: HashMap<u32, usize> = HashMap::new();
+        let mut packed = Vec::new();
         for (pos, n) in stms {
             let dict = match self.dict(n) { Some(d) => d, None => continue };
             let count = match get(&dict, b"/N") { Some(Val::Num(v)) => v as usize, _ => continue };
@@ -481,24 +480,25 @@ impl<'a> Pdf<'a> {
             if first > buf.len() { continue; }
             let header = nums_in(&buf[..first]);
             let idx = self.bufs.len();
-            let mut entries = Vec::new();
             for k in 0..count.min(header.len() / 2) {
                 let num = header[2 * k] as u32;
                 let off = first + header[2 * k + 1] as usize;
                 let next = if k + 1 < header.len() / 2 { first + header[2 * k + 3] as usize } else { buf.len() };
-                if off <= next && next <= buf.len() { entries.push((num, off, next)); }
+                if off <= next && next <= buf.len() { packed.push((pos, num, idx, off, next)); }
             }
             self.bufs.push(buf);
-            for (num, start, end) in entries {
-                let newer = match self.objs.get(&num) {
-                    None => true,
-                    Some(Loc::Packed { .. }) => packed_at.get(&num).map(|&p| p < pos).unwrap_or(true),
-                    Some(Loc::Top { dict, .. }) => dict.0 < pos,
-                };
-                if newer {
-                    self.objs.insert(num, Loc::Packed { buf: idx, start, end });
-                    packed_at.insert(num, pos);
-                }
+        }
+        // file position of the stream each packed object came from, for the "later wins" rule
+        let mut packed_at: HashMap<u32, usize> = HashMap::new();
+        for (pos, num, buf, start, end) in packed {
+            let later = match self.objs.get(&num) {
+                None => true,
+                Some(Loc::Packed { .. }) => packed_at.get(&num).map(|&p| p < pos).unwrap_or(true),
+                Some(Loc::Top { dict, .. }) => dict.0 < pos,
+            };
+            if later {
+                self.objs.insert(num, Loc::Packed { buf, start, end });
+                packed_at.insert(num, pos);
             }
         }
     }
