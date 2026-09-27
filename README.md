@@ -26,14 +26,14 @@ The 150 constructed files come from 60 randomly chosen real NDAs (seed 20260925,
 
 ## Results
 
-Run on 2026-09-25 on a Windows laptop. Absolute times vary about two times between runs, so compare within a run.
+Rerun on 27 September 2026, after the parser fixes in version 4, on the same Windows laptop. Absolute times vary about two times between runs, so compare within a run.
 
 | | Routing correct (needs OCR or not) | Wrong | Median | p95 | Max |
 |---|---|---|---|---|---|
-| scan-or-text, native | 525 / 525 | 0 | 1.34 ms | 4.09 ms | 14.0 ms |
-| pdf-inspector 1.24.0 (same run) | 491 / 525 | 34 (all false "needs OCR") | 3.06 ms | 9.49 ms | 66.7 ms |
+| scan-or-text, native | 525 / 525 | 0 | 0.68 ms | 1.84 ms | 7.1 ms |
+| pdf-inspector 1.24.0 (same run) | 491 / 525 | 34 (all false "needs OCR") | 1.40 ms | 4.45 ms | 34.5 ms |
 
-Run back to back twice, native was 0.90 ms median and 2.6 ms p95, and WebAssembly 1.16 ms median and 3.6 ms p95. Both got 525 / 525. PyMuPDF's full parse (the ground truth, in Python) takes 14.4 ms median, 40 ms p95 and 703 ms max.
+Run back to back twice, native was 0.67 and 0.66 ms median and 1.9 ms p95, and WebAssembly 0.87 ms median and 2.3 to 2.4 ms p95. All four runs got 525 / 525. The WebAssembly file is 115 KB. In the first run, on 25 September, native was 1.34 ms median against pdf-inspector's 3.06 ms, and 0.90 ms back to back against 1.16 ms for WebAssembly. PyMuPDF's full parse (the ground truth, in Python) took 14.4 ms median, 40 ms p95 and 703 ms max in that run; I didn't rerun it.
 
 Of pdf-inspector's 34 misses, 32 are the 30 constructed OCR'd scans plus 2 real ones, which it treats as scanned, so they'd get OCR'd again. That's a difference in definition. The other 2 are digital documents it flagged as scanned, which are real errors.
 
@@ -42,10 +42,11 @@ Of pdf-inspector's 34 misses, 32 are the 30 constructed OCR'd scans plus 2 real 
 1. No decryption (miniz_oxide only). Routing was 507 correct and 18 undecided: exactly the 18 encrypted files.
 2. RC4 and AES-128 decryption added, for an empty user password, revisions 2 to 4. The first AES attempt failed because the stream slice kept the end-of-line before `endstream`, so the data wasn't a multiple of 16 bytes. Decrypting whole blocks only fixed it.
 3. ASCII85 and ASCIIHex filters added, which one encrypted file needed. That gave 525 / 525.
+4. Four parser fixes ported from wordbox: /Contents given as a reference to an array object, the LZW and RunLength filters, a stream search that ran to the end of the file for every object, and object streams read in HashMap order, so which copy of a duplicated object won could change between runs (now the copy later in the file wins). Routing stayed at 525 / 525. The first fix changed 5 pages in 4 real files from empty to text, which is what the labeller says they are.
 
 ## Limits
 
-AES-256 (revisions 5 and 6), the LZW and RunLength filters and non-empty passwords aren't supported; they all return `unknown`. Character counts are rough: a two-byte CID font counts double, and the thresholds (40 characters; image coverage of 30% and 80%) mirror the labeller's. The constructed scans are clean, with no skew, noise, tiled strips or JBIG2/CCITT images, and only 3 real documents need OCR.
+AES-256 (revisions 5 and 6) and non-empty passwords aren't supported; they return `unknown`. Character counts are rough: a two-byte CID font counts double, and the thresholds (40 characters; image coverage of 30% and 80%) mirror the labeller's. The constructed scans are clean, with no skew, noise, tiled strips or JBIG2/CCITT images, and only 3 real documents need OCR.
 
 ## Commands
 

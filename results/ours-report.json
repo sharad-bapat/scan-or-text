@@ -7,9 +7,10 @@
    "category_correct": 60,
    "false_ocr": 0,
    "missed_ocr": 0,
-   "ms_median": 0.524,
-   "ms_p95": 1.204,
-   "ms_max": 2.137
+   "undecided": 0,
+   "ms_median": 0.576,
+   "ms_p95": 1.415,
+   "ms_max": 1.8
   },
   "constructed:scanned": {
    "n": 60,
@@ -17,9 +18,10 @@
    "category_correct": 60,
    "false_ocr": 0,
    "missed_ocr": 0,
-   "ms_median": 0.25,
-   "ms_p95": 0.633,
-   "ms_max": 0.86
+   "undecided": 0,
+   "ms_median": 0.345,
+   "ms_p95": 0.986,
+   "ms_max": 1.108
   },
   "constructed:scanned_ocr": {
    "n": 30,
@@ -27,248 +29,34 @@
    "category_correct": 30,
    "false_ocr": 0,
    "missed_ocr": 0,
-   "ms_median": 0.571,
-   "ms_p95": 0.941,
-   "ms_max": 0.961
+   "undecided": 0,
+   "ms_median": 0.566,
+   "ms_p95": 0.757,
+   "ms_max": 1.027
   },
   "real": {
    "n": 375,
    "routing_correct": 375,
-   "category_correct": 357,
+   "category_correct": 375,
    "false_ocr": 0,
    "missed_ocr": 0,
-   "ms_median": 0.705,
-   "ms_p95": 2.231,
-   "ms_max": 11.382
+   "undecided": 0,
+   "ms_median": 0.711,
+   "ms_p95": 1.941,
+   "ms_max": 10.571
   }
  },
  "errors": [],
- "misses": [
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/Acme%20Corporation%20Inc%20NDA%20template.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/ADVANIDE-NON-DISCLOSURE-AGREEMENT.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/amc-general-mutual-non-disclosure-agreement-en-gb.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/Confidentiality%20and%20Non-Disclosure%20Agreement%20%28CNA-1%29.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/Geheimhaltungsvereinbarung_Abschlussarbeiten_HFU_englisch.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/lti-two-way-cda-template.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/mnda-1110.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/Mutual+Confidentiality+Agreement_1.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/NDA%20for%20Tender%20Ref%202201000050.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/NDA%20Form%20WEB_WITH%20Instructions%20%28RECIPROCAL%29%20%28v%202016-03-18_EN%29.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/NDD.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/Non-Disclosure%20Agreement_5.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/Non-Disclosure-Agreement-9-1-2018.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/P27CB13028.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/QEP-Williston-Form-of-Confidentiality-Agreement-BMO.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/SINTEC-UK-LTD-Non-disclosure-agreement-2017.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/standard_nda.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  },
-  {
-   "set": "real",
-   "file": "datasets/contract-nli/contract-nli/raw/wayne-fueling-systems-mutual-non-disclosure-agreement-final.pdf",
-   "truth": [
-    false,
-    "text"
-   ],
-   "got": [
-    false,
-    "unknown"
-   ]
-  }
- ],
+ "misses": [],
  "all": {
   "n": 525,
   "route_ok": 525,
-  "cat_ok": 507,
+  "cat_ok": 525,
   "fp": 0,
   "fn": 0,
-  "ms_median": 0.614,
-  "ms_p95": 1.997,
-  "ms_max": 11.382
+  "undecided": 0,
+  "ms_median": 0.636,
+  "ms_p95": 1.81,
+  "ms_max": 10.571
  }
 }
