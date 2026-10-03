@@ -700,6 +700,10 @@ fn run(pdf: &Pdf, content: &[u8], resources: Option<&[u8]>, ctm0: M, t: &mut Tal
                         // inline image: skip its data up to a whitespace-delimited EI
                         let id = find(s, b"ID", i).unwrap_or(s.len());
                         let mut k = id + 2;
+                        // ASCII-encoded data can hold "EI" itself, so skip to its end marker first
+                        if let Some(end) = ascii_data_end(&s[i..id.min(s.len())]) {
+                            if let Some(e) = find(s, end, k) { k = e + end.len(); }
+                        }
                         loop {
                             match find(s, b"EI", k) {
                                 Some(e) if (e == 0 || is_ws(s[e - 1])) && (e + 2 >= s.len() || !is_regular(s[e + 2])) => { k = e + 2; break; }
@@ -780,6 +784,12 @@ fn classify_page(pdf: &Pdf, page: u32) -> PageClass {
 }
 
 /// Classify a whole PDF from its bytes.
+/// The end marker of an inline image's data when its outer filter is ASCII85 (`~>`) or ASCIIHex (`>`).
+fn ascii_data_end(dict: &[u8]) -> Option<&'static [u8]> {
+    let has = |k: &[u8]| { let mut f = 0; while let Some(p) = find(dict, k, f) { let e = p + k.len(); if e >= dict.len() || !is_regular(dict[e]) { return true; } f = e; } false };
+    if has(b"/A85") || has(b"/ASCII85Decode") { Some(b"~>") } else if has(b"/AHx") || has(b"/ASCIIHexDecode") { Some(b">") } else { None }
+}
+
 pub fn classify(data: &[u8]) -> Report {
     let mut r = Report::default();
     if !data.starts_with(b"%PDF") && find(&data[..data.len().min(1024)], b"%PDF", 0).is_none() {
@@ -885,6 +895,16 @@ endstream");
         let r = classify(&one_page("4 0 R", &[(4, &s)]));
         assert_eq!((r.text, r.unknown), (1, 0), "{:?}", r);
     }
+    #[test]
+    fn ascii85_inline_data_holding_ei() {
+        // the A85 data has a line starting "EI(": stopping there opens a string that swallows the text after it
+        for img in [&b"BI /W 2 /H 1 /CS /G /BPC 8 /F /A85 ID ab\nEI(cd~> EI\n"[..], b"BI /W 2 /H 1 /CS /G /BPC 8 /F [/AHx /Fl] ID 0E\nEI(> EI\n"] {
+            let s = stream("", &[img, TEXT].concat());
+            let r = classify(&one_page("4 0 R", &[(4, &s)]));
+            assert_eq!((r.text, r.unknown), (1, 0), "{:?}", r);
+        }
+    }
+
     #[test]
     fn many_small_objects_index_in_linear_time() {
         // 20000 stream-less objects before the only stream: each one used to search to the end

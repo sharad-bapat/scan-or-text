@@ -43,6 +43,7 @@ Of pdf-inspector's 34 misses, 32 are the 30 constructed OCR'd scans plus 2 real 
 2. RC4 and AES-128 decryption added, for an empty user password, revisions 2 to 4. The first AES attempt failed because the stream slice kept the end-of-line before `endstream`, so the data wasn't a multiple of 16 bytes. Decrypting whole blocks only fixed it.
 3. ASCII85 and ASCIIHex filters added, which one encrypted file needed. That gave 525 / 525.
 4. Four parser fixes ported from wordbox: /Contents given as a reference to an array object, the LZW and RunLength filters, a stream search that ran to the end of the file for every object, and object streams read in HashMap order, so which copy of a duplicated object won could change between runs (now the copy later in the file wins). Routing stayed at 525 / 525. The first fix changed 5 pages in 4 real files from empty to text, which is what the labeller says they are.
+5. Inline images with ASCII85 or ASCIIHex data are now skipped up to the data's own end marker, ported from where-are-the-regions. The data can contain "EI" itself: on govdocs1 003961 a line of it starts "EI(", so the rest of the page, 8 more image strips among it, was read as one string. None of the 525 files changes. 003961, not in the set, moves from text to scanned_ocr, as the labeller says: its map labels are real text over images that cover 97% of the page.
 
 ## Limits
 
