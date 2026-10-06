@@ -13,7 +13,7 @@ name = "scan-or-text"
 path = "src/main.rs"
 
 [dependencies]
-# The PDF reading shared with wordbox and where-are-the-regions (D4): object index, filters, decryption, pages.
+# The PDF reading shared with wordbox and where-are-the-regions: object index, filters, decryption, pages.
 pdf-core = { path = "../../pdf-core" }
 wasm-bindgen = { version = "0.2", optional = true }
 

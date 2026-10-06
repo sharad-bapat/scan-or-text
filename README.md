@@ -6,7 +6,7 @@ Does this PDF need OCR? A minimal structural classifier in Rust (also compiled t
 
 - `classifier/`: the library and CLI.
   - `src/lib.rs`: content-stream interpreter and the page labels.
-  - The PDF reading (object index, page tree, filters, empty-password decryption with RC4 and AES-128) is [pdf-core](https://github.com/sharad-bapat/pdf-core), shared with wordbox and where-are-the-regions; clone it next to this repo, since classifier/Cargo.toml refers to it by path (../../pdf-core).
+  - The PDF reading (object index, page tree, filters, empty-password decryption with RC4 and AES-128) is [pdf-core](https://github.com/sharad-bapat/pdf-core), shared with wordbox and where-are-the-regions. Clone it next to this repo: classifier/Cargo.toml gives it by path.
 - `bench/`: head-to-head with [pdf-inspector](https://github.com/firecrawl/pdf-inspector) (`classify_pdf_mem`, default `Sample(8)`), with both run in the same process on the same bytes.
 - `tools/label.py`: ground truth, a full PyMuPDF parse of every page (text length plus image coverage).
 - `tools/synth.py`: constructed test PDFs, with labels known by construction:
@@ -44,7 +44,7 @@ Of pdf-inspector's 34 misses, 32 are the 30 constructed OCR'd scans plus 2 real 
 4. Four parser fixes ported from wordbox: /Contents given as a reference to an array object, the LZW and RunLength filters, a stream search that ran to the end of the file for every object, and object streams read in HashMap order, so which copy of a duplicated object won could change between runs (now the copy later in the file wins). Routing stayed at 525 / 525. The first fix changed 5 pages in 4 real files from empty to text, which is what the labeller says they are.
 5. Inline images with ASCII85 or ASCIIHex data are now skipped up to the data's own end marker, ported from where-are-the-regions. The data can contain "EI" itself: on govdocs1 003961 a line of it starts "EI(", so the rest of the page, 8 more image strips among it, was read as one string. None of the 525 files changes. 003961, not in the set, moves from text to scanned_ocr, as the labeller says: its map labels are real text over images that cover 97% of the page. The WebAssembly file is now 116 KB.
 
-6. The parser moved to the shared pdf-core crate (6 October 2026). The labels are the same on all 1,791 files checked: the 525 routing files, the 153 constructed and sample files, and 1,113 test files of where-are-the-regions. pdf-core walks up to 2,000 pages; this tool still reads at most 500.
+6. The parser moved to the shared pdf-core crate (6 October 2026). The labels are the same before and after on all 1,791 files checked: the 525 routing files, the 153 constructed and sample files, and the 1,113 test files of where-are-the-regions. pdf-core walks up to 2,000 pages, so this tool now cuts its own list at 500. The WebAssembly file is 124,032 bytes, and its labels match the native ones on all 525 routing files.
 
 ## Limits
 

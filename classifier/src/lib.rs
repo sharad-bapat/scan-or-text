@@ -49,7 +49,7 @@ impl Report {
 }
 
 // The PDF reading itself (byte helpers, values, filters, the object index, decryption, the page
-// tree) is pdf-core's, shared with wordbox and where-are-the-regions (D4). Its page walk goes to
+// tree) is pdf-core's, shared with wordbox and where-are-the-regions. Its page walk goes to
 // 2,000 pages; this tool still reads at most MAX_PAGES of them.
 pub(crate) use pdf_core::*;
 
