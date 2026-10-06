@@ -13,10 +13,8 @@ name = "scan-or-text"
 path = "src/main.rs"
 
 [dependencies]
-miniz_oxide = "0.8"
-# Decryption of PDFs that open with an empty user password (standard handler R2-R4: RC4, AES-128).
-md-5 = "0.10"
-aes = "0.8"
+# The PDF reading shared with wordbox and where-are-the-regions (D4): object index, filters, decryption, pages.
+pdf-core = { path = "../../pdf-core" }
 wasm-bindgen = { version = "0.2", optional = true }
 
 [features]
